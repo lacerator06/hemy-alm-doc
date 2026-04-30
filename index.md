@@ -6,7 +6,7 @@ _layout: landing
 
 ---
 
-Leonard Estrada | April 28, 2026
+<span style="color: #999; font-size: 0.9em; font-style: italic;">Leonard Estrada | April 28, 2026</span>
 
 Welcome to the HEMY ALM documentation. This site contains the standards, rules, and guidelines that all Power Apps developers must follow when working across the HEMY environments.
 
