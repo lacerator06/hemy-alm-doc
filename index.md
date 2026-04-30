@@ -4,6 +4,9 @@ _layout: landing
 
 # HEMY Application Lifecycle Management
 
+By Leonard Estrada  
+April 28, 2026
+
 Welcome to the HEMY ALM documentation. This site contains the standards, rules, and guidelines that all Power Apps developers must follow when working across the HEMY environments.
 
 ## Environments
