@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Daily Collaboration Protocol | HEMY-ALM </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Daily Collaboration Protocol | HEMY-ALM ">
+      
+      
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="HEMY Application Lifecycle Management">
+            HEMY Application Lifecycle Management
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="daily-collaboration-protocol">Daily Collaboration Protocol</h1>
+
+<p>These are the day-to-day practices every developer must follow to avoid conflicts in the shared environments.</p>
+<h2 id="start-of-day">Start of Day</h2>
+<ol>
+<li><strong>Check the Form Lock Register</strong> for any active locks on forms you plan to work on.</li>
+<li><strong>Read the team channel</strong> for announcements, ongoing deployments, or warnings from other developers.</li>
+<li><strong>Plan your work</strong> and announce what components you intend to modify today.</li>
+</ol>
+<h2 id="before-editing-a-shared-component">Before Editing a Shared Component</h2>
+<ol>
+<li><strong>Announce in the team channel</strong> which component you are about to edit (form, view, business rule, flow, etc.).</li>
+<li><strong>Wait for acknowledgment</strong> if another developer recently worked on the same component.</li>
+<li><strong>Lock the form</strong> in the Form Lock Register if you are editing a form (see <a href="form-development.html">Form Development</a>).</li>
+<li><strong>Check the component</strong> in the form editor or solution to confirm no unpublished changes from another developer are pending.</li>
+</ol>
+<h2 id="during-development">During Development</h2>
+<ol>
+<li>Work inside <strong>your own unmanaged solution</strong> at all times.</li>
+<li>Save and publish frequently — small incremental publishes are safer than large batches.</li>
+<li>If you discover a conflict or unexpected change to a component, <strong>stop and notify the team</strong> before proceeding.</li>
+<li>Follow all <a href="naming-conventions.html">Naming Conventions</a>.</li>
+</ol>
+<h2 id="after-completing-a-unit-of-work">After Completing a Unit of Work</h2>
+<ol>
+<li><strong>Publish your customizations immediately.</strong> Unpublished changes are invisible to other developers.</li>
+<li><strong>Release any form locks</strong> you no longer need.</li>
+<li><strong>Test your changes</strong> in DEV to confirm basic functionality.</li>
+<li>Notify the team channel if your changes affect shared components.</li>
+</ol>
+<h2 id="end-of-day">End of Day</h2>
+<ol>
+<li><p><strong>Publish all pending customizations.</strong> Do not leave unpublished changes overnight.</p>
+</li>
+<li><p><strong>Release all form locks</strong> you hold. If you must hold a lock overnight, notify the team with an explanation.</p>
+</li>
+<li><p><strong>Post a brief summary</strong> of what you changed today in the team channel. Example:</p>
+<blockquote>
+<p>&quot;Updated Case Main Form — added Approval tab with 3 new fields. Updated business rule for auto-status. Lock released.&quot;</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="communication-expectations">Communication Expectations</h2>
+<ul>
+<li>Use the designated <strong>Teams channel</strong> for all development announcements.</li>
+<li><strong>Respond promptly</strong> when another developer asks about a component you own or have locked.</li>
+<li>If you will be absent, <strong>release all locks</strong> and notify the team of any in-progress work that others may need to continue.</li>
+</ul>
+<h2 id="weekly-sync">Weekly Sync</h2>
+<p>Hold a brief weekly sync meeting (15-30 minutes) to:</p>
+<ul>
+<li>Review active development work and upcoming changes</li>
+<li>Identify potential conflicts before they happen</li>
+<li>Plan deployments to UAT</li>
+<li>Clean up abandoned solutions or components in DEV and EXPLORATION</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

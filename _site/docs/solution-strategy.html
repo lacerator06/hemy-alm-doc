@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Solution Strategy | HEMY-ALM </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Solution Strategy | HEMY-ALM ">
+      
+      
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="HEMY Application Lifecycle Management">
+            HEMY Application Lifecycle Management
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="solution-strategy">Solution Strategy</h1>
+
+<p>Solutions are the foundation of organized development in Power Apps. Every developer must follow these rules to avoid conflicts and ensure clean deployments.</p>
+<h2 id="core-rule">Core Rule</h2>
+<p><strong>Every developer must work inside their own unmanaged solution in HEMY DEV.</strong> Never customize components directly in the Default Solution.</p>
+<h2 id="solution-structure">Solution Structure</h2>
+<h3 id="per-developer-solutions">Per-Developer Solutions</h3>
+<p>Each developer creates their own unmanaged solution for the feature or module they are working on.</p>
+<p><strong>Naming format:</strong> <code>HEMY_&lt;DevInitials&gt;</code></p>
+<p>Examples:</p>
+<ul>
+<li><code>HEMY_LE</code></li>
+</ul>
+<h3 id="master-release-solution">Master Release Solution</h3>
+<p>When features are ready for deployment, components are consolidated into a single <strong>master unmanaged solution</strong> before exporting.
+These Solutions are the Main solutions to be deployed using Pipelines</p>
+<p><strong>Naming format:</strong> <code>Name_of_Solution_v&lt;Major&gt;.&lt;Minor&gt;.&lt;Patch&gt;.&lt;Build&gt;</code></p>
+<p>Examples:</p>
+<ul>
+<li><code>HEMY_P61 Budget Reporting_v1.0.0.1</code>
+<ul>
+<li>Each Deployment will automatically update the Build #</li>
+</ul>
+</li>
+<li><code>HEMY_P61 Budget Reporting_v1.2.0.0</code>
+<ul>
+<li>A new solution is recommended to be created when there is a major change.</li>
+</ul>
+</li>
+</ul>
+<h2 id="publisher">Publisher</h2>
+<p>All developers must use the <strong>same publisher</strong> to ensure consistent prefixes across all components.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Display Name</td>
+<td>Hemy</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>HEMY</td>
+</tr>
+<tr>
+<td>Prefix</td>
+<td><code>hmy</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Moving forward, the use of the default publisher</strong> (<code>new_</code> prefix) is not allowed. Components created with the wrong prefix cannot be easily renamed and will cause long-term maintenance issues.</p>
+</blockquote>
+<h2 id="before-starting-work">Before Starting Work</h2>
+<p>Before adding a component to your solution, check the following:</p>
+<ol>
+<li><strong>Does the component already exist</strong> in the environment? If so, another developer may own it.</li>
+<li><strong>Is the component already in another developer's solution?</strong> If yes, coordinate with that developer before adding it to yours.</li>
+<li><strong>Is a form or shared component locked?</strong> Check the <a href="form-development.html#form-lock-register">Form Lock Register</a>.</li>
+</ol>
+<h2 id="solution-export-rules">Solution Export Rules</h2>
+<ul>
+<li><strong>Export as managed</strong> when deploying to UAT and PROD.</li>
+<li><strong>Version your solutions</strong> using semantic versioning (<code>Major.Minor.Patch.Build</code>). Never reuse a version number.</li>
+<li>Store exported solution <code>.zip</code> files in the <strong>shared repository</strong> (SharePoint or Azure DevOps) with the version number and export date.</li>
+<li>Include release notes describing what changed in each version.</li>
+</ul>
+<h2 id="no-duplicate-components-across-solutions">No Duplicate Components Across Solutions</h2>
+<p><strong>A component must exist in only one developer's solution at any given time.</strong> If a component already lives in another solution, it must not be added to yours.</p>
+<h3 id="why-this-matters">Why This Matters</h3>
+<p>When the same component (e.g., Case Main Form) exists in multiple solutions, deploying those solutions creates unpredictable results. The last solution imported wins, silently overwriting changes from the other. This makes deployments unreliable and changes untraceable.</p>
+<h3 id="rule">Rule</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Component exists in Solution A</td>
+<td>Do <strong>not</strong> add it to Solution B</td>
+</tr>
+<tr>
+<td>You need to modify a component in another solution</td>
+<td>Coordinate with the owner of that solution</td>
+</tr>
+<tr>
+<td>A component must move between solutions</td>
+<td>Remove it from the original solution first, then add it to the new one</td>
+</tr>
+</tbody>
+</table>
+<h3 id="enforcement">Enforcement</h3>
+<p>The <strong>Deployment Lead</strong> validates every solution before export. If duplicate components are found across solutions, the deployment will be <strong>rejected</strong> until the duplication is resolved. See the <a href="deployment-lead.html">Deployment Lead</a> page for the full validation checklist.</p>
+<h3 id="example">Example</h3>
+<blockquote>
+<p>Developer A has <code>Case Main Form</code> in <code>HEMY_CaseManagement_DA</code>.</p>
+<p>Developer B needs to add fields to the same form. Developer B must <strong>not</strong> add <code>Case Main Form</code> to <code>HEMY_Escalation_DB</code>. Instead, Developer B coordinates with Developer A, or the form is transferred to Developer B's solution after being removed from Developer A's.</p>
+</blockquote>
+<h2 id="component-ownership">Component Ownership</h2>
+<ul>
+<li>The developer who creates a component is its <strong>owner</strong> and is responsible for its maintenance.</li>
+<li>Do not modify, rename, or delete another developer's components without their explicit approval.</li>
+<li>If a component needs to be shared across multiple developer solutions, agree on a single owner who is responsible for changes to that component.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

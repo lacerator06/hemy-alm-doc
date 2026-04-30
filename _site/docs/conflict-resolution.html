@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Conflict Resolution | HEMY-ALM </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Conflict Resolution | HEMY-ALM ">
+      
+      
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="HEMY Application Lifecycle Management">
+            HEMY Application Lifecycle Management
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="conflict-resolution">Conflict Resolution</h1>
+
+<p>Even with good practices, conflicts will happen. This page defines how to identify, resolve, and prevent recurring conflicts.</p>
+<h2 id="accidental-overwrites">Accidental Overwrites</h2>
+<p>If two developers accidentally modify the same component (form, view, business rule, etc.):</p>
+<ol>
+<li>The <strong>second developer to publish</strong> must verify that the first developer's changes are still intact.</li>
+<li>If changes were overwritten, restore from the <strong>solution zip backup</strong> — this is why versioned exports are critical.</li>
+<li>The two developers must coordinate to merge both sets of changes manually.</li>
+<li>Update the Form Lock Register or team channel to prevent the same conflict from happening again.</li>
+</ol>
+<h2 id="disputed-ownership">Disputed Ownership</h2>
+<p>If two developers disagree about who should own or modify a component:</p>
+<ol>
+<li>Check the <a href="naming-conventions.html">Naming Conventions</a> — the developer whose initials are in the component name is the designated owner.</li>
+<li>If ownership is unclear, the <strong>team lead</strong> decides.</li>
+<li>Never resolve a dispute by overwriting the other developer's work.</li>
+</ol>
+<h2 id="broken-deployments">Broken Deployments</h2>
+<p>If a managed solution import to UAT or PROD fails:</p>
+<ol>
+<li><strong>Do not attempt to fix the issue in UAT or PROD.</strong></li>
+<li>Review the import error log to identify the cause.</li>
+<li>Common causes:
+<ul>
+<li>Missing dependency (a component references something that does not exist in the target environment)</li>
+<li>Version conflict (an older version imported over a newer one)</li>
+<li>Schema mismatch (a column type was changed in DEV but the target still has the old type)</li>
+</ul>
+</li>
+<li>Fix the issue in <strong>HEMY DEV</strong>, increment the solution version, and re-export.</li>
+<li>Re-import the corrected solution to UAT for testing.</li>
+</ol>
+<h2 id="unmanaged-components-in-uat-or-prod">Unmanaged Components in UAT or PROD</h2>
+<p>If unmanaged customizations are discovered in UAT or PROD:</p>
+<ol>
+<li><strong>Do not delete them immediately</strong> — they may be supporting active functionality.</li>
+<li>Identify who created them and why.</li>
+<li>Recreate the component properly in HEMY DEV inside a solution.</li>
+<li>Deploy the managed version to UAT/PROD, which will overlay the unmanaged component.</li>
+<li>Document the incident and reinforce the rule: no direct customizations in UAT or PROD.</li>
+</ol>
+<h2 id="escalation-path">Escalation Path</h2>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>First Action</th>
+<th>Escalate To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Form overwrite</td>
+<td>Restore from backup, coordinate with other developer</td>
+<td>Team Lead</td>
+</tr>
+<tr>
+<td>Ownership dispute</td>
+<td>Check naming conventions</td>
+<td>Team Lead</td>
+</tr>
+<tr>
+<td>Failed deployment</td>
+<td>Review error log, fix in DEV</td>
+<td>Deployment Lead</td>
+</tr>
+<tr>
+<td>Unmanaged component in UAT/PROD</td>
+<td>Identify owner, recreate in DEV</td>
+<td>Team Lead</td>
+</tr>
+<tr>
+<td>Repeated rule violations</td>
+<td>Peer discussion</td>
+<td>Team Lead / Management</td>
+</tr>
+</tbody>
+</table>
+<h2 id="prevention">Prevention</h2>
+<p>The best conflict resolution is prevention:</p>
+<ul>
+<li><strong>Use the Form Lock Register</strong> consistently.</li>
+<li><strong>Announce your work</strong> in the team channel before starting.</li>
+<li><strong>Publish frequently</strong> so others can see your changes.</li>
+<li><strong>Export solution backups</strong> regularly so overwrites can be reversed.</li>
+<li><strong>Attend the weekly sync</strong> to surface potential conflicts early.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

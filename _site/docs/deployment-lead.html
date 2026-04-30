@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Deployment Lead | HEMY-ALM </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Deployment Lead | HEMY-ALM ">
+      
+      
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="HEMY Application Lifecycle Management">
+            HEMY Application Lifecycle Management
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="deployment-lead">Deployment Lead</h1>
+
+<p>The Deployment Lead is the gatekeeper for all solution deployments across HEMY environments. No solution moves to UAT or PROD without the Deployment Lead's validation and approval.</p>
+<h2 id="responsibilities">Responsibilities</h2>
+<ol>
+<li><strong>Validate solutions</strong> before export from HEMY DEV.</li>
+<li><strong>Import managed solutions</strong> to HEMY UAT and HEMY PROD.</li>
+<li><strong>Reject deployments</strong> that fail validation checks.</li>
+<li><strong>Maintain the deployment log</strong> for all imports.</li>
+<li><strong>Coordinate rollbacks</strong> when a deployment causes issues.</li>
+</ol>
+<h2 id="pre-deployment-validation-checklist">Pre-Deployment Validation Checklist</h2>
+<p>Before exporting any solution from HEMY DEV, the Deployment Lead must complete the following checks:</p>
+<h3 id="1-no-duplicate-components-across-solutions">1. No Duplicate Components Across Solutions</h3>
+<p><strong>This is the most critical check.</strong> Each component must exist in exactly one solution. If the same object appears in multiple solutions, the deployment is rejected.</p>
+<p><strong>How to check:</strong></p>
+<ol>
+<li>Open each developer's solution in HEMY DEV.</li>
+<li>Compare the component lists across all active solutions.</li>
+<li>Flag any component that appears in more than one solution.</li>
+</ol>
+<p><strong>Common duplicates to watch for:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component Type</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Forms</td>
+<td>Case Main Form in both Solution A and Solution B</td>
+</tr>
+<tr>
+<td>Views</td>
+<td>Active Cases view in both Solution A and Solution C</td>
+</tr>
+<tr>
+<td>Business Rules</td>
+<td>Same rule added to two solutions</td>
+</tr>
+<tr>
+<td>Cloud Flows</td>
+<td>Same flow referenced in multiple solutions</td>
+</tr>
+<tr>
+<td>Tables</td>
+<td>Same table added to multiple solutions (check if only needed components are included)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note:</strong> A table being present in multiple solutions is acceptable only if each solution adds <strong>different components</strong> (e.g., Solution A adds Column X, Solution B adds Column Y). What is not acceptable is the <strong>same component</strong> (form, view, column) existing in both.</p>
+</blockquote>
+<p><strong>Resolution steps when duplicates are found:</strong></p>
+<ol>
+<li>Identify which developer owns the component.</li>
+<li>Remove the component from all other solutions.</li>
+<li>If both developers need to modify it, one developer takes ownership and the other coordinates changes through them.</li>
+</ol>
+<p><strong>For components already in multiple solutions</strong></p>
+<ol>
+<li>We don't need to delete them unless they are causing issues in HEMY PROD</li>
+<li>Usually, Forms in multiple solution and have multiple Managed Layers in PRODUCTION causes Issues like misaligned fields or duplicated lookups. These are the ones we will fix.</li>
+</ol>
+<h3 id="2-solution-checker-results">2. Solution Checker Results</h3>
+<ol>
+<li>Run <strong>Solution Checker</strong> on the solution in HEMY DEV.</li>
+<li>All <strong>critical</strong> and <strong>high-severity</strong> issues must be resolved before export.</li>
+<li>Medium and low issues should be reviewed and documented if not resolved.</li>
+</ol>
+<h3 id="3-version-number">3. Version Number</h3>
+<ol>
+<li>Confirm the solution version has been incremented.</li>
+<li>Confirm the version number has never been used before.</li>
+<li>Version must follow the format: <code>Major.Minor.Patch.Build</code>.</li>
+</ol>
+<h3 id="4-publisher-verification">4. Publisher Verification</h3>
+<ol>
+<li>Confirm the solution uses the <strong>HEMY publisher</strong> (<code>hmy</code> prefix).</li>
+<li>Reject any solution using the default publisher (<code>new_</code> prefix).</li>
+</ol>
+<h3 id="5-component-completeness">5. Component Completeness</h3>
+<ol>
+<li>Verify all required components are included in the solution (no missing dependencies).</li>
+<li>Check that no unnecessary components have been accidentally added.</li>
+<li>Confirm no components from the Default Solution have been pulled in.</li>
+</ol>
+<h3 id="6-release-notes">6. Release Notes</h3>
+<ol>
+<li>Confirm the developer has provided release notes describing what changed.</li>
+<li>Release notes must list all added, modified, and removed components.</li>
+</ol>
+<h2 id="validation-outcome">Validation Outcome</h2>
+<table>
+<thead>
+<tr>
+<th>Result</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All checks pass</td>
+<td>Proceed with managed export and import to UAT</td>
+</tr>
+<tr>
+<td>Duplicate components found</td>
+<td><strong>Reject.</strong> Developer must remove duplicates before re-submitting.</td>
+</tr>
+<tr>
+<td>Solution Checker critical issues</td>
+<td><strong>Reject.</strong> Developer must resolve issues.</td>
+</tr>
+<tr>
+<td>Missing version increment</td>
+<td><strong>Reject.</strong> Developer must update version number.</td>
+</tr>
+<tr>
+<td>Wrong publisher</td>
+<td><strong>Reject.</strong> Developer must recreate components with correct publisher.</td>
+</tr>
+<tr>
+<td>Missing release notes</td>
+<td><strong>Hold.</strong> Developer must provide notes before deployment proceeds.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="deployment-execution">Deployment Execution</h2>
+<p><strong>HEMY UAT</strong></p>
+<ol>
+<li>In HEMY DEV, open the solution to be deployed and navigate on Pipelines</li>
+<li>In the Pipeline dropdown, select <strong>DEV-to-UAT</strong></li>
+<li>Click on the <code>Deploy Here</code> button</li>
+<li>The Deploying Solution window will appear on the right side, you may select Now or Later for the Deployment Schedule. Then click Next</li>
+<li>This will automatically validate the solution for missing dependencies and errors.</li>
+<li>If the solution contains Connection References, Enable the <strong>Re-establish connection to activate you solution</strong> toggle, this will let you select which connection reference in UAT you will use for your flows.
+<ul>
+<li>For Dataverse connections you may use <strong>Microsoft Dataverse - Shared</strong></li>
+<li>For other connections are to be determined.</li>
+</ul>
+</li>
+<li>Write in the Deployment Notes.</li>
+</ol>
+<p><strong>HEMY PROD</strong></p>
+<ol>
+<li>Same process as in <strong>HEMY UAT</strong> but change step 2 to <strong>DEV-to-PROD</strong></li>
+</ol>
+<h2 id="deployment-schedule">Deployment Schedule</h2>
+<p>To avoid conflicts and rushed validations:</p>
+<ul>
+<li><strong>UAT deployments:</strong> Scheduled times only (e.g., Tuesday and Thursday mornings). No ad-hoc imports.</li>
+<li><strong>PROD deployments:</strong> Only after UAT sign-off. Requires at minimum 1 business day notice.</li>
+<li><strong>Emergency hotfixes:</strong> Must still go through DEV → UAT → PROD, but validation can be expedited with team lead approval.</li>
+</ul>
+<h2 id="what-the-deployment-lead-must-not-do">What the Deployment Lead Must NOT Do</h2>
+<ul>
+<li>Deploy without completing the validation checklist.</li>
+<li>Allow unmanaged solutions into UAT or PROD.</li>
+<li>Skip the duplicate component check.</li>
+<li>Deploy to PROD without written UAT sign-off.</li>
+<li>Make direct customizations in UAT or PROD to &quot;fix&quot; a deployment issue.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
