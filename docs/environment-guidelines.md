@@ -34,7 +34,7 @@ Each environment has a specific purpose and set of rules. Developers must respec
 ### Rules
 
 - All work must be done inside a **named unmanaged solution** (see [Solution Strategy](solution-strategy.md)).
-- Use the standard **publisher prefix** (`hemy_`). Never use the default `new_` prefix.
+- Use the standard **publisher prefix** (`hmy_`). Never use the default `new_` prefix.
 - Do not create tables, columns, or any components outside of a solution.
 - Do not delete or rename another developer's components without their approval.
 - Publish your customizations immediately after completing a unit of work. Unpublished changes are invisible to others and create confusion.

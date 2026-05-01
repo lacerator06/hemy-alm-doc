@@ -28,8 +28,8 @@ If the publisher does not exist, contact the team lead. **Do not create your own
 Create a new unmanaged solution for your feature or module:
 
 - **Display Name:** `HEMY <Your Initials>` (e.g., `HEMY LE`)
-- **Name:** `HEMY_<Initials>` (e.g., `HEMY_WellPlanning_JD`)
-- **Publisher:** Select the HEMY publisher (`hemy`)
+- **Name:** `HEMY_<Initials>` (e.g., `HEMY_JD`)
+- **Publisher:** Select the HEMY publisher (`HEMY`)
 - **Version:** Start at `1.0.0.0`
 
 ### 3. Familiarize Yourself with Existing Components
