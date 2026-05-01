@@ -10,7 +10,7 @@ Consistent naming makes components traceable, reduces confusion, and ensures smo
 | Solution (release) | `HEMY_SolutionName_v<Version>` | `HEMY_P29 Ordering Process_v1.2.0.0` |
 | Publisher prefix | `hmy_` | `hmy_` |
 | Table | `hmy_<entityname>` | `hmy_new_table` |
-| Column | `hmy_<columnname>` | `hemy_new_column` |
+| Column | `hmy_<columnname>` | `hmy_new_column` |
 | Form | `<Table Display Name> - <Purpose>` | `Case - Main Form` |
 | View | `<Table Display Name> - <Description>` | `Case - Active Cases by ` |
 | Business Rule | `<Initials> - <Description>` | `LE - Set Purchase Order Status to Paid` |
