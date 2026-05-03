@@ -119,3 +119,5 @@ To avoid conflicts and rushed validations:
 - Skip the duplicate component check.
 - Deploy to PROD without written UAT sign-off.
 - Make direct customizations in UAT or PROD to "fix" a deployment issue.
+- Delegating a task to Support Team to do customization in UAT or PROD to fix a deployment issue.
+- Delete any component (views, forms, columns etc) in the Master Solution.
